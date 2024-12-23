@@ -39,7 +39,7 @@ public class Tabuleiro {
 			}
 			veriFicarVitoria();
 			try {
-				Thread.sleep(1500);
+				Thread.sleep(00);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -75,7 +75,7 @@ public class Tabuleiro {
 		System.out.println(dado2);
 		System.out.println("Soma dos dados: " + sum);
 		try {
-			Thread.sleep(1500);
+			Thread.sleep(00);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -148,7 +148,7 @@ public class Tabuleiro {
 			System.out.println("Casa " + jogador.getPosition() + ": ande 3 casas");
 
 			try {
-				Thread.sleep(1500);
+				Thread.sleep(00);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -215,7 +215,7 @@ public class Tabuleiro {
 
 		}
 		try {
-			Thread.sleep(1500);
+			Thread.sleep(00);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

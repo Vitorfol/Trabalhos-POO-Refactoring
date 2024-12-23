@@ -84,7 +84,7 @@ public class TabuleiroConsole {
 			for (Jogador j : tabuleiro.getJogadores()) {
 				tabuleiro.moveInSquare(j);
 				try {
-					Thread.sleep(1000);
+					Thread.sleep(000);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
