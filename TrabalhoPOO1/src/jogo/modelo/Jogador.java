@@ -1,8 +1,10 @@
 package jogo.modelo;
 
+import factory.CorFactory;
+
 public abstract class Jogador {
 
-	protected String color;
+	private Cor cor;
 	protected int id;
 	protected int position;
 	protected int numberMoves = 0;
@@ -19,25 +21,7 @@ public abstract class Jogador {
 
 	public Jogador(int id) {
 		this.id = id;
-		switch (id) {
-		case 1:
-			color = "azul";
-			break;
-		case 2:
-			color = "vermelho";
-			break;
-		case 3:
-			color = "rosa";
-			break;
-		case 4:
-			color = "amarelo";
-			break;
-		case 5:
-			color = "verde";
-			break;
-		case 6:
-			color = "roxo";
-		}
+		cor = CorFactory.instanciarCor(id);
 	}
 
 	public int getPosition() {
@@ -63,34 +47,14 @@ public abstract class Jogador {
 	public void setBlocked(boolean isBlocked) {
 		this.blocked = isBlocked;
 	}
-
+	
 	public String getColor() {
-		String strColor = " ";
 		String resetColor = "\u001B[0m";
-		switch (id) {
-		case 1:
-			strColor = "\u001B[34m";
-			break;
-		case 2:
-			strColor = "\u001B[31m";
-			break;
-		case 3:
-			strColor = "\u001B[38;5;205m";
-			break;
-		case 4:
-			strColor = "\u001B[33m";
-			break;
-		case 5:
-			strColor = "\u001B[32m";
-			break;
-		case 6:
-			strColor = "\u001B[35m";
-		}
 		if(winner) {
 			setWinner(false);
-			return strColor + color.toUpperCase() + " VENCEU :)" + resetColor;
+			return cor.getNome() + " VENCEU :)" + resetColor;
 		}
-		else return strColor + color.substring(0, 1).toUpperCase() + color.substring(1).toLowerCase() + resetColor;
+		else return cor.getNome() + resetColor;
 	}
 
 	public int getId() {
@@ -101,30 +65,10 @@ public abstract class Jogador {
 		int newPosition = this.position + sum;
 		setPosition(newPosition);
 	}
-
+	
 	public String toString() {
-		String strColor = " ";
 		String resetColor = "\u001B[0m";
-		switch (id) {
-		case 1:
-			strColor = "\u001B[34m";
-			break;
-		case 2:
-			strColor = "\u001B[31m";
-			break;
-		case 3:
-			strColor = "\u001B[38;5;205m";
-			break;
-		case 4:
-			strColor = "\u001B[33m";
-			break;
-		case 5:
-			strColor = "\u001B[32m";
-			break;
-		case 6:
-			strColor = "\u001B[35m";
-		}
-		return strColor + id + resetColor;
+		return cor.toString() + id + resetColor;
 	}
 
 	public abstract String classString();
