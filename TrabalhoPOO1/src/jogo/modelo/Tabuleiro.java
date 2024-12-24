@@ -27,26 +27,6 @@ public class Tabuleiro {
 		this.jogadores = jogadores;
 	}
 
-	private void moveAtomic(int sum, Jogador jogador) {
-		for (int i = 0; i < sum; i++) {
-			squares.get(jogador.getPosition()).remPlayer(jogador);
-			jogador.movePlayer(1);
-			squares.get(jogador.getPosition()).addPlayer(jogador);
-			System.out.println("\n" + this);
-			System.out.println(jogador.getColor() + " na casa " + jogador.getPosition());
-			if (jogador.getPosition() == 40) {
-				jogador.setNumberMoves(jogador.getNumberMoves() + 1);
-			}
-			veriFicarVitoria();
-			try {
-				Thread.sleep(00);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-	}
-
 	public void moveInSquare(Jogador jogador) {
 
 		System.out.println("\nÉ a vez do jogador " + jogador.getColor() + ": " + jogador.classString());
@@ -76,7 +56,7 @@ public class Tabuleiro {
 			e.printStackTrace();
 		}
 
-		moveAtomic(sum, jogador);
+		jogador.moveAtomic(sum, jogador, this);
 		jogador.setNumberMoves(jogador.getNumberMoves() + 1);
 		int index = jogadores.indexOf(jogador);
 		checkPosition(jogador);
@@ -150,7 +130,7 @@ public class Tabuleiro {
 			}
 
 			if (!(jogador instanceof JogadorAzarado)) {
-				moveAtomic(3, jogador);
+				jogador.moveAtomic(3, jogador, this);
 			} else {
 				System.out.println("Jogador é azarado. Não andará as 3 casas");
 			}
@@ -287,4 +267,10 @@ public class Tabuleiro {
 		}
 		return sb.toString();
 	}
+
+	public ArrayList<Campo> getSquares() {
+		return squares;
+	}
+	
+	
 }

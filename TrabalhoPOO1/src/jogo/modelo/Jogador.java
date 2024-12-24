@@ -1,5 +1,7 @@
 package jogo.modelo;
 
+import java.util.ArrayList;
+
 import jogo.factory.CorFactory;
 
 public abstract class Jogador {
@@ -69,6 +71,27 @@ public abstract class Jogador {
 	public String toString() {
 		String resetColor = "\u001B[0m";
 		return cor.toString() + id + resetColor;
+	}
+	
+	public void moveAtomic(int sum, Jogador jogador, Tabuleiro tabuleiro) {
+		ArrayList<Campo> squares = tabuleiro.getSquares();
+		for (int i = 0; i < sum; i++) {
+			squares.get(jogador.getPosition()).remPlayer(jogador);
+			jogador.movePlayer(1);
+			squares.get(jogador.getPosition()).addPlayer(jogador);
+			System.out.println("\n" + tabuleiro);
+			System.out.println(jogador.getColor() + " na casa " + jogador.getPosition());
+			if (jogador.getPosition() == 40) {
+				jogador.setNumberMoves(jogador.getNumberMoves() + 1);
+			}
+			tabuleiro.veriFicarVitoria();
+			try {
+				Thread.sleep(00);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	public abstract int[] jogarDados();
