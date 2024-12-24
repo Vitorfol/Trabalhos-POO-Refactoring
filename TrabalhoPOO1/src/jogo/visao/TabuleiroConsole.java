@@ -75,22 +75,14 @@ public class TabuleiroConsole {
 		System.out.println();
 
 	}
+	
+	public void iniciar() {
+		tabuleiro = new Tabuleiro(arrayPlayers);
+		System.out.println(tabuleiro);
+	}
 
 	public void jogar() {
-		tabuleiro = new Tabuleiro(arrayPlayers);
-
-		System.out.println(tabuleiro);
-		while (!tabuleiro.veriFicarVitoria()) {
-			for (Jogador j : tabuleiro.getJogadores()) {
-				tabuleiro.moveInSquare(j);
-				try {
-					Thread.sleep(000);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
+		tabuleiro.logica();
 		scan.close();
 	}
 

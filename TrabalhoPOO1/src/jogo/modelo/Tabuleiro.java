@@ -276,5 +276,16 @@ public class Tabuleiro {
 		return squares;
 	}
 	
+	public void logica() {
+		while (!veriFicarVitoria()) {
+			moverLosJugadores();
+		}
+	}
+	
+	private void moverLosJugadores() {
+		for (Jogador j : getJogadores()) {
+			moveInSquare(j);
+		}
+	}
 	
 }
