@@ -1,6 +1,6 @@
 package jogo.modelo;
 
-import factory.CorFactory;
+import jogo.factory.CorFactory;
 
 public abstract class Jogador {
 
@@ -70,6 +70,8 @@ public abstract class Jogador {
 		String resetColor = "\u001B[0m";
 		return cor.toString() + id + resetColor;
 	}
+	
+	public abstract int[] jogarDados();
 
 	public abstract String classString();
 }

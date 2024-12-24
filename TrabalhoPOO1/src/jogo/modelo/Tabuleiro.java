@@ -60,15 +60,10 @@ public class Tabuleiro {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Pressione Enter para girar os dados");
 		scan.nextLine();
-		int sum = 0;
-		int dado1 = 0;
-		int dado2 = 0;
-		do {
-			Random random = new Random();
-			dado1 = random.nextInt(6) + 1;
-			dado2 = random.nextInt(6) + 1;
-			sum = dado1 + dado2;
-		} while ((jogador instanceof JogadorAzarado && sum > 6) || (jogador instanceof JogadorSortudo && sum < 7));
+		int[] resultadoDados = jogador.jogarDados();
+		int sum = resultadoDados[2];
+		int dado2 = resultadoDados[1];
+		int dado1 = resultadoDados[0];
 		System.out.print("Dado 1: ");
 		System.out.println(dado1);
 		System.out.print("Dado 2: ");

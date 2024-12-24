@@ -1,4 +1,4 @@
-package factory.copy;
+package jogo.factory;
 
 import jogo.modelo.Cor;
 
