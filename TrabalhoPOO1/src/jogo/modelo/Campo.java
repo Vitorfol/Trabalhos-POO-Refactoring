@@ -20,13 +20,21 @@ public class Campo {
 	}
 
 	public void remPlayer(Jogador player) {
+		int index = searchPlayerIndex(player);
+		if(index != - 1)
+			players.remove(index);
+	}
+	
+	private int searchPlayerIndex(Jogador player)
+	{
 		for (int i = 0; i < players.size(); i++) {
 			if (players.get(i).getId() == player.getId()) {
-				players.remove(i);
+				return i;
 			}
 		}
+		return -1;
 	}
-
+	
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("[");

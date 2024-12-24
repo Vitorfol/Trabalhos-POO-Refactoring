@@ -203,16 +203,20 @@ public class Tabuleiro {
 			squares.get(40).getPlayers().get(0).setWinner(true);
 			System.out.println(squares.get(40).getPlayers().get(0).getColor());
 			System.out.println();
-			for (Jogador j : jogadores) {
-				System.out.println("Jogadas do " + j.getColor() + ": " + j.getNumberMoves());
-				System.out.println(j.getColor() + " terminou na casa " + j.getPosition());
-				System.out.println();
-			}
+			exibirResultadoFinal();
 			System.exit(0);
 		}
 		return false;
 	}
-
+	
+	private void exibirResultadoFinal()
+	{
+		for (Jogador j : jogadores) {
+			System.out.println("Jogadas do " + j.getColor() + ": " + j.getNumberMoves() + "\n"
+			+ j.getColor() + " terminou na casa " + j.getPosition());
+		}
+	}
+	
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i <= 10; i++) {
