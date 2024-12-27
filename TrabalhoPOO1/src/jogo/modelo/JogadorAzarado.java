@@ -17,6 +17,9 @@ public class JogadorAzarado extends Jogador {
 	        dado2 = random.nextInt(6) + 1; 
 	        soma = dado1 + dado2;
 	    } while (soma > 6);
+	    	    
+		if(dado1 == dado2) setDadosIguais(true);
+		else setDadosIguais(false);
 
 	    return new int[]{dado1, dado2, soma}; 
 	}

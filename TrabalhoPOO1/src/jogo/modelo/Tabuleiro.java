@@ -37,10 +37,18 @@ public class Tabuleiro {
 			jogador.setBlocked(false);
 			return;
 		}
+		
 		@SuppressWarnings("resource")
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Pressione Enter para girar os dados");
 		scan.nextLine();
+
+		mover(jogador);
+	    if (jogador.isDadosIguais()) tratarDadosIguais(jogador);
+
+	}
+	
+	public int jogarDados(Jogador jogador) {
 		int[] resultadoDados = jogador.jogarDados();
 		int sum = resultadoDados[2];
 		int dado2 = resultadoDados[1];
@@ -50,23 +58,24 @@ public class Tabuleiro {
 		System.out.print("Dado 2: ");
 		System.out.println(dado2);
 		System.out.println("Soma dos dados: " + sum);
-		try {
-			Thread.sleep(00);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+		return sum;
+	}
+	
+	public void mover(Jogador jogador) {
+		int sum = jogarDados(jogador);
 		jogador.moveAtomic(sum, jogador, this);
-		jogador.setNumberMoves(jogador.getNumberMoves() + 1);
-		int index = jogadores.indexOf(jogador);
-		checkPosition(jogador);
+		tratarNovPosicao(jogador);
 		System.out.println(jogador.getColor() + " finalizou a jogada na casa: " + jogador.getPosition());
-		if (dado1 == dado2) {
-			System.out.println("Dados iguais. Jogue mais uma vez");
-			moveInSquare(jogadores.get(index));
-		}
+	}
+	
+	public void tratarNovPosicao(Jogador jogador) {
+		jogador.setNumberMoves(jogador.getNumberMoves() + 1);
+		checkPosition(jogador);
+	}
 
+	private void tratarDadosIguais(Jogador jogador) {
+	    System.out.println("Dados iguais. Jogue mais uma vez");
+	    moveInSquare(jogadores.get(jogadores.indexOf(jogador)));
 	}
 
 	public void checkPosition(Jogador jogador) {
