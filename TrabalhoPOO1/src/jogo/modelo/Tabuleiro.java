@@ -10,12 +10,16 @@ public class Tabuleiro {
 	private ArrayList<Jogador> jogadores = new ArrayList<>();
 	private ArrayList<Campo> squares = new ArrayList<>(41);
 
-	public Tabuleiro(ArrayList<Jogador> players) {
+	public Tabuleiro() {
 		for (int i = 0; i < 41; i++) {
 			squares.add(new Campo(i));
 		}
-		for (Jogador jogador : players) {
-			jogadores.add(jogador);
+	}
+	
+	public void inicializarJogadores()
+	{
+		for(Jogador jogador : jogadores)
+		{
 			squares.get(0).addPlayer(jogador);
 		}
 	}

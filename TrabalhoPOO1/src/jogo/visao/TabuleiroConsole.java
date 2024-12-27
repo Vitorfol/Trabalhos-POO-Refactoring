@@ -13,12 +13,10 @@ public class TabuleiroConsole {
 
 	Tabuleiro tabuleiro;
 
-	ArrayList<Jogador> arrayPlayers = new ArrayList<Jogador>();
-
 	Scanner scan = new Scanner(System.in);
 
 	public TabuleiroConsole() {
-
+		tabuleiro = new Tabuleiro();
 		boolean repetição;
 		int numPlayers = 0;
 
@@ -31,7 +29,7 @@ public class TabuleiroConsole {
 
 		do {
 
-			arrayPlayers.clear();
+			tabuleiro.getJogadores().clear();
 			Set<Integer> tiposJogadores = new HashSet<>();
 
 			for (int i = 1; i <= numPlayers; i++) {
@@ -44,7 +42,7 @@ public class TabuleiroConsole {
 					opc = scan.nextInt();
 
 				} while (opc <= 0 || opc > 3);
-				arrayPlayers.add(JogadorFactory.instanciarJogador(i, opc, 0, 0, false));
+				tabuleiro.getJogadores().add(JogadorFactory.instanciarJogador(i, opc, 0, 0, false));
 				tiposJogadores.add(opc);
 			}
 
@@ -57,11 +55,7 @@ public class TabuleiroConsole {
 		} while (repetição);
 
 		System.out.println();
-
-	}
-
-	public void iniciar() {
-		tabuleiro = new Tabuleiro(arrayPlayers);
+		tabuleiro.inicializarJogadores();
 		System.out.println(tabuleiro);
 	}
 
