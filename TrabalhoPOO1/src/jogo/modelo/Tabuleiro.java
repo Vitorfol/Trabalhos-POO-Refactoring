@@ -184,7 +184,13 @@ public class Tabuleiro {
 	public void casas20e35(Jogador jogador) {
 		int lower = buscarPosicaoLower();
 		Jogador aux = atribuirAux();
-		trocar(lower, aux, jogador);
+		squares.get(lower).remPlayer(aux);
+		aux.setPosition(jogador.getPosition());
+		squares.get(jogador.getPosition()).addPlayer(aux);
+
+		squares.get(jogador.getPosition()).remPlayer(jogador);
+		jogador.setPosition(lower);
+		squares.get(jogador.getPosition()).addPlayer(jogador);
 	}
 	
 	public int buscarPosicaoLower() {
@@ -209,13 +215,7 @@ public class Tabuleiro {
 	}
 	
 	public void trocar(int lower, Jogador aux, Jogador jogador) {
-		squares.get(lower).remPlayer(aux);
-		aux.setPosition(jogador.getPosition());
-		squares.get(jogador.getPosition()).addPlayer(aux);
 
-		squares.get(jogador.getPosition()).remPlayer(jogador);
-		jogador.setPosition(lower);
-		squares.get(jogador.getPosition()).addPlayer(jogador);
 	}
 	
 
