@@ -98,7 +98,7 @@ public abstract class Jogador {
 		}
 	}
 	
-	public abstract int[] jogarDados();
+	public abstract int jogarDados();
 
 	public abstract String classString();
 

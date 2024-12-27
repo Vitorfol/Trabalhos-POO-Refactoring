@@ -8,7 +8,7 @@ public class JogadorNormal extends Jogador {
 		super(id, position, numberMoves, dadosIguais);
 	}
 	
-	public int[] jogarDados() {
+	public int jogarDados() {
 	    Random random = new Random();
 	    int dado1, dado2, soma;
 	    dado1 = random.nextInt(6) + 1;
@@ -18,7 +18,13 @@ public class JogadorNormal extends Jogador {
 	    if(dado1 == dado2) setDadosIguais(true);
 	    else setDadosIguais(false);
 	    
-	    return new int[]{dado1, dado2, soma}; 
+		System.out.print("Dado 1: ");
+		System.out.println(dado1);
+		System.out.print("Dado 2: ");
+		System.out.println(dado2);
+		System.out.println("Soma dos dados: " + soma);
+	    
+	    return soma; 
 	}
 
 	@Override

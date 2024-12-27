@@ -41,32 +41,20 @@ public class Tabuleiro {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Pressione Enter para girar os dados");
 		scan.nextLine();
-		int[] resultadoDados = jogador.jogarDados();
-		int sum = resultadoDados[2];
-		int dado2 = resultadoDados[1];
-		int dado1 = resultadoDados[0];
-		System.out.print("Dado 1: ");
-		System.out.println(dado1);
-		System.out.print("Dado 2: ");
-		System.out.println(dado2);
-		System.out.println("Soma dos dados: " + sum);
-		try {
-			Thread.sleep(00);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+		int sum = jogador.jogarDados();
 
 		jogador.moveAtomic(sum, jogador, this);
 		jogador.setNumberMoves(jogador.getNumberMoves() + 1);
-		int index = jogadores.indexOf(jogador);
 		checkPosition(jogador);
 		System.out.println(jogador.getColor() + " finalizou a jogada na casa: " + jogador.getPosition());
-		if (dado1 == dado2) {
-			System.out.println("Dados iguais. Jogue mais uma vez");
-			moveInSquare(jogadores.get(index));
-		}
+		if(jogador.isDadosIguais()) tratarDadosIguais(jogador);
 
+	}
+	
+	public void tratarDadosIguais(Jogador jogador) {
+			System.out.println("Dados iguais. Jogue mais uma vez");
+			moveInSquare(jogadores.get(jogadores.indexOf(jogador)));
 	}
 
 	public void checkPosition(Jogador jogador) {
