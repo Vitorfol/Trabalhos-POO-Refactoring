@@ -213,11 +213,6 @@ public class Tabuleiro {
 		}
 		return aux;
 	}
-	
-	public void trocar(int lower, Jogador aux, Jogador jogador) {
-
-	}
-	
 
 	public boolean veriFicarVitoria() {
 		if (!squares.get(40).getPlayers().isEmpty()) {
