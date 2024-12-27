@@ -168,21 +168,7 @@ public class Tabuleiro {
 		case 35:
 
 			System.out.print("Casa " + jogador.getPosition() + ": Troca de posiçao com o jogador mais atras\n");
-			int lower = 40;
-			Jogador aux = null;
-			for (Jogador j : jogadores) {
-				if (j.getPosition() < lower) {
-					lower = j.getPosition();
-					aux = j;
-				}
-			}
-			squares.get(lower).remPlayer(aux);
-			aux.setPosition(jogador.getPosition());
-			squares.get(jogador.getPosition()).addPlayer(aux);
-
-			squares.get(jogador.getPosition()).remPlayer(jogador);
-			jogador.setPosition(lower);
-			squares.get(jogador.getPosition()).addPlayer(jogador);
+			casas20e35(jogador);
 			break;
 
 		}
@@ -194,6 +180,44 @@ public class Tabuleiro {
 		}
 
 	}
+	
+	public void casas20e35(Jogador jogador) {
+		int lower = buscarPosicaoLower();
+		Jogador aux = atribuirAux();
+		trocar(lower, aux, jogador);
+	}
+	
+	public int buscarPosicaoLower() {
+		int lower = 40;
+		for (Jogador j : jogadores) {
+			if (j.getPosition() < lower) {
+				lower = j.getPosition();
+			}
+		}
+		return lower;
+	}
+	
+	public Jogador atribuirAux() {
+		Jogador aux = null;
+		int lower = buscarPosicaoLower();
+		for (Jogador j : jogadores) {
+			if (j.getPosition() == lower) {
+				aux = j;
+			}
+		}
+		return aux;
+	}
+	
+	public void trocar(int lower, Jogador aux, Jogador jogador) {
+		squares.get(lower).remPlayer(aux);
+		aux.setPosition(jogador.getPosition());
+		squares.get(jogador.getPosition()).addPlayer(aux);
+
+		squares.get(jogador.getPosition()).remPlayer(jogador);
+		jogador.setPosition(lower);
+		squares.get(jogador.getPosition()).addPlayer(jogador);
+	}
+	
 
 	public boolean veriFicarVitoria() {
 		if (!squares.get(40).getPlayers().isEmpty()) {
