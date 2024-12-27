@@ -6,9 +6,7 @@ import java.util.Scanner;
 import java.util.Set;
 
 import jogo.modelo.Jogador;
-import jogo.modelo.JogadorAzarado;
-import jogo.modelo.JogadorNormal;
-import jogo.modelo.JogadorSortudo;
+import jogo.factory.JogadorFactory;
 import jogo.modelo.Tabuleiro;
 
 public class TabuleiroConsole {
@@ -34,7 +32,7 @@ public class TabuleiroConsole {
 		do {
 
 			arrayPlayers.clear();
-			Set<String> tiposJogadores = new HashSet<>();
+			Set<Integer> tiposJogadores = new HashSet<>();
 
 			for (int i = 1; i <= numPlayers; i++) {
 
@@ -46,22 +44,8 @@ public class TabuleiroConsole {
 					opc = scan.nextInt();
 
 				} while (opc <= 0 || opc > 3);
-
-				switch (opc) {
-
-				case 1:
-					arrayPlayers.add(new JogadorAzarado(i));
-					tiposJogadores.add("JogadorAzarado");
-					break;
-				case 2:
-					arrayPlayers.add(new JogadorNormal(i));
-					tiposJogadores.add("JogadorNormal");
-					break;
-				case 3:
-					arrayPlayers.add(new JogadorSortudo(i));
-					tiposJogadores.add("JogadorSortudo");
-
-				}
+				arrayPlayers.add(JogadorFactory.instanciarJogador(i, opc, 0, 0));
+				tiposJogadores.add(opc);
 			}
 
 			repetição = tiposJogadores.size() < 2;
@@ -75,7 +59,7 @@ public class TabuleiroConsole {
 		System.out.println();
 
 	}
-	
+
 	public void iniciar() {
 		tabuleiro = new Tabuleiro(arrayPlayers);
 		System.out.println(tabuleiro);

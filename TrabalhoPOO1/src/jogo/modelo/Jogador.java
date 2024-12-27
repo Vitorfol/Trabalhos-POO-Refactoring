@@ -13,17 +13,19 @@ public abstract class Jogador {
 	protected boolean blocked = false;
 	protected boolean winner = false;
 
+	public Jogador(int id, int position, int numberMoves) {
+		this.id = id;
+		cor = CorFactory.instanciarCor(id);
+		this.position = position;
+		this.numberMoves = numberMoves;
+	}
+	
 	public boolean isWinner() {
 		return winner;
 	}
 
 	public void setWinner(boolean winner) {
 		this.winner = winner;
-	}
-
-	public Jogador(int id) {
-		this.id = id;
-		cor = CorFactory.instanciarCor(id);
 	}
 
 	public int getPosition() {

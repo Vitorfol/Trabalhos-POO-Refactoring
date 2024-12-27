@@ -3,6 +3,7 @@ package jogo.modelo;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+import jogo.factory.JogadorFactory;
 
 public class Tabuleiro {
 
@@ -83,33 +84,29 @@ public class Tabuleiro {
 			int option = random.nextInt(2) + 1;
 			if (jogador instanceof JogadorAzarado) {
 				if (option == 1) {
-					newPlayer = new JogadorNormal(jogador.getId());
+					newPlayer = JogadorFactory.instanciarJogador(jogador.getId(), 1 , jogador.getPosition(), jogador.getNumberMoves());
 					System.out.println(jogador.getColor() + " mudou de azarado para NORMAL");
 				} else {
-					newPlayer = new JogadorSortudo(jogador.getId());
+					newPlayer = JogadorFactory.instanciarJogador(jogador.getId(), 3 , jogador.getPosition(), jogador.getNumberMoves());
 					System.out.println(jogador.getColor() + " mudou de azarado para SORTUDO");
 				}
 			} else if (jogador instanceof JogadorNormal) {
 				if (option == 1) {
-					newPlayer = new JogadorAzarado(jogador.getId());
+					newPlayer =  JogadorFactory.instanciarJogador(jogador.getId(), 1, jogador.getPosition(), jogador.getNumberMoves());
 					System.out.println(jogador.getColor() + " mudou de normal para AZARADO");
 				} else {
-					newPlayer = new JogadorSortudo(jogador.getId());
+					newPlayer = JogadorFactory.instanciarJogador(jogador.getId(), 3, jogador.getPosition(),  jogador.getNumberMoves());;
 					System.out.println(jogador.getColor() + " mudou de normal para SORTUDO");
 				}
 			} else {
 				if (option == 1) {
-					newPlayer = new JogadorNormal(jogador.getId());
+					newPlayer =  JogadorFactory.instanciarJogador(jogador.getId(), 2, jogador.getPosition(), jogador.getNumberMoves());;
 					System.out.println(jogador.getColor() + " mudou de sortudo para NORMAL");
 				} else {
-					newPlayer = new JogadorAzarado(jogador.getId());
+					newPlayer = JogadorFactory.instanciarJogador(jogador.getId(), 1, jogador.getPosition(), jogador.getNumberMoves());;
 					System.out.println(jogador.getColor() + " mudou de sortudo para AZARADO");
 				}
 			}
-
-			newPlayer.setBlocked(jogador.isBlocked());
-			newPlayer.setPosition(jogador.getPosition());
-			newPlayer.setNumberMoves(jogador.getNumberMoves());
 			int index = jogadores.indexOf(jogador);
 			squares.get(jogador.getPosition()).remPlayer(jogador);
 			squares.get(jogador.getPosition()).addPlayer(newPlayer);

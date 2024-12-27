@@ -4,9 +4,8 @@ import java.util.Random;
 
 public class JogadorSortudo extends Jogador {
 
-	public JogadorSortudo(int id) {
-		super(id);
-		// TODO Auto-generated constructor stub
+	public JogadorSortudo(int id, int position, int numberMoves) {
+		super(id, position, numberMoves);
 	}
 	
 	public int[] jogarDados() {
