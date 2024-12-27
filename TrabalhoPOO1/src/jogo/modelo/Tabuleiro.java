@@ -46,19 +46,28 @@ public class Tabuleiro {
 			jogador.setBlocked(false);
 			return;
 		}
-		@SuppressWarnings("resource")
-		Scanner scan = new Scanner(System.in);
-		System.out.println("Pressione Enter para girar os dados");
-		scan.nextLine();
-		
-		int sum = jogador.jogarDados();
+		 esperarEntradaParaRodarDados();
+		    int sum = jogador.jogarDados();
+		    moverJogador(jogador, sum);
+		    verificarPosicao(jogador);
 
-		jogador.moveAtomic(sum, jogador, this);
-		jogador.setNumberMoves(jogador.getNumberMoves() + 1);
-		regras.checkPosition(jogador, this);
-		System.out.println(jogador.getColor() + " finalizou a jogada na casa: " + jogador.getPosition());
-		if(jogador.isDadosIguais()) tratarDadosIguais(jogador);
-
+		    if(jogador.isDadosIguais()) tratarDadosIguais(jogador);		    
+		}
+	
+	private void esperarEntradaParaRodarDados() {
+	    Scanner scan = new Scanner(System.in);
+	    System.out.println("Pressione Enter para girar os dados");
+	    scan.nextLine();
+	}
+	
+	private void verificarPosicao(Jogador jogador) {
+	    regras.checkPosition(jogador, this);
+	    System.out.println(jogador.getColor() + " finalizou a jogada na casa: " + jogador.getPosition());
+	}
+	
+	private void moverJogador(Jogador jogador, int sum) {
+	    jogador.moveAtomic(sum, jogador, this);
+	    jogador.setNumberMoves(jogador.getNumberMoves() + 1);  
 	}
 	
 	public void tratarDadosIguais(Jogador jogador) {
