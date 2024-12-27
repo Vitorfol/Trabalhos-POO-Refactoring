@@ -14,7 +14,7 @@ public class TabuleiroConsole {
 	Scanner scan = new Scanner(System.in);
 
 	public TabuleiroConsole() {
-		tabuleiro = new Tabuleiro();
+		tabuleiro = Tabuleiro.getInstancia();
 		boolean repetição;
 		int numPlayers = 0;
 

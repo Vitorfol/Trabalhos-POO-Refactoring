@@ -8,11 +8,17 @@ public class Tabuleiro {
 	private ArrayList<Jogador> jogadores = new ArrayList<>();
 	private ArrayList<Campo> squares = new ArrayList<>(41);
 	RegrasCasas regras = new RegrasCasas(squares, jogadores);
+	private static Tabuleiro instancia;
 
-	public Tabuleiro() {
+	private Tabuleiro() {
 		for (int i = 0; i < 41; i++) {
 			squares.add(new Campo(i));
 		}
+	}
+	
+	public static Tabuleiro getInstancia() {
+		if(instancia == null) instancia = new Tabuleiro();
+		return instancia;
 	}
 	
 	public void inicializarJogadores()
