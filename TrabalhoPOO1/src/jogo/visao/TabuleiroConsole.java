@@ -1,12 +1,10 @@
 package jogo.visao;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
 import jogo.factory.JogadorFactory;
-import jogo.modelo.Jogador;
 import jogo.modelo.Tabuleiro;
 
 public class TabuleiroConsole {
