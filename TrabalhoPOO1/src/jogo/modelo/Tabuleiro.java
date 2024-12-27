@@ -84,26 +84,26 @@ public class Tabuleiro {
 			int option = random.nextInt(2) + 1;
 			if (jogador instanceof JogadorAzarado) {
 				if (option == 1) {
-					newPlayer = JogadorFactory.instanciarJogador(jogador.getId(), 1 , jogador.getPosition(), jogador.getNumberMoves());
+					newPlayer = JogadorFactory.instanciarJogador(jogador.getId(), 1 , jogador.getPosition(), jogador.getNumberMoves(), jogador.isDadosIguais());
 					System.out.println(jogador.getColor() + " mudou de azarado para NORMAL");
 				} else {
-					newPlayer = JogadorFactory.instanciarJogador(jogador.getId(), 3 , jogador.getPosition(), jogador.getNumberMoves());
+					newPlayer = JogadorFactory.instanciarJogador(jogador.getId(), 3 , jogador.getPosition(), jogador.getNumberMoves(), jogador.isDadosIguais());
 					System.out.println(jogador.getColor() + " mudou de azarado para SORTUDO");
 				}
 			} else if (jogador instanceof JogadorNormal) {
 				if (option == 1) {
-					newPlayer =  JogadorFactory.instanciarJogador(jogador.getId(), 1, jogador.getPosition(), jogador.getNumberMoves());
+					newPlayer =  JogadorFactory.instanciarJogador(jogador.getId(), 1, jogador.getPosition(), jogador.getNumberMoves(), jogador.isDadosIguais());
 					System.out.println(jogador.getColor() + " mudou de normal para AZARADO");
 				} else {
-					newPlayer = JogadorFactory.instanciarJogador(jogador.getId(), 3, jogador.getPosition(),  jogador.getNumberMoves());;
+					newPlayer = JogadorFactory.instanciarJogador(jogador.getId(), 3, jogador.getPosition(),  jogador.getNumberMoves(), jogador.isDadosIguais());
 					System.out.println(jogador.getColor() + " mudou de normal para SORTUDO");
 				}
 			} else {
 				if (option == 1) {
-					newPlayer =  JogadorFactory.instanciarJogador(jogador.getId(), 2, jogador.getPosition(), jogador.getNumberMoves());;
+					newPlayer =  JogadorFactory.instanciarJogador(jogador.getId(), 2, jogador.getPosition(), jogador.getNumberMoves(), jogador.isDadosIguais());
 					System.out.println(jogador.getColor() + " mudou de sortudo para NORMAL");
 				} else {
-					newPlayer = JogadorFactory.instanciarJogador(jogador.getId(), 1, jogador.getPosition(), jogador.getNumberMoves());;
+					newPlayer = JogadorFactory.instanciarJogador(jogador.getId(), 1, jogador.getPosition(), jogador.getNumberMoves(), jogador.isDadosIguais());
 					System.out.println(jogador.getColor() + " mudou de sortudo para AZARADO");
 				}
 			}

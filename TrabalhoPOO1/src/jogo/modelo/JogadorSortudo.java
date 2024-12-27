@@ -4,8 +4,8 @@ import java.util.Random;
 
 public class JogadorSortudo extends Jogador {
 
-	public JogadorSortudo(int id, int position, int numberMoves) {
-		super(id, position, numberMoves);
+	public JogadorSortudo(int id, int position, int numberMoves, boolean dadosIguais) {
+		super(id, position, numberMoves, dadosIguais);
 	}
 	
 	public int[] jogarDados() {
@@ -17,6 +17,9 @@ public class JogadorSortudo extends Jogador {
 	        dado2 = random.nextInt(6) + 1; 
 	        soma = dado1 + dado2;
 	    } while (soma < 7);
+	    
+	    if(dado1 == dado2) setDadosIguais(true);
+	    else setDadosIguais(false);
 
 	    return new int[]{dado1, dado2, soma};
 	}

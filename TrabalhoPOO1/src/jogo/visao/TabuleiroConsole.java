@@ -44,7 +44,7 @@ public class TabuleiroConsole {
 					opc = scan.nextInt();
 
 				} while (opc <= 0 || opc > 3);
-				arrayPlayers.add(JogadorFactory.instanciarJogador(i, opc, 0, 0));
+				arrayPlayers.add(JogadorFactory.instanciarJogador(i, opc, 0, 0, false));
 				tiposJogadores.add(opc);
 			}
 

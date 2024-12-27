@@ -12,12 +12,14 @@ public abstract class Jogador {
 	protected int numberMoves = 0;
 	protected boolean blocked = false;
 	protected boolean winner = false;
-
-	public Jogador(int id, int position, int numberMoves) {
+	private boolean dadosIguais;
+	
+	public Jogador(int id, int position, int numberMoves, boolean dadosIguais) {
 		this.id = id;
 		cor = CorFactory.instanciarCor(id);
 		this.position = position;
 		this.numberMoves = numberMoves;
+		this.dadosIguais = dadosIguais;
 	}
 	
 	public boolean isWinner() {
@@ -99,4 +101,12 @@ public abstract class Jogador {
 	public abstract int[] jogarDados();
 
 	public abstract String classString();
+
+	public boolean isDadosIguais() {
+		return dadosIguais;
+	}
+
+	public void setDadosIguais(boolean dadosIguais) {
+		this.dadosIguais = dadosIguais;
+	}
 }
