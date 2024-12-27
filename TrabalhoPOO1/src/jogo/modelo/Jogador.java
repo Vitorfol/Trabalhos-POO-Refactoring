@@ -12,7 +12,6 @@ public abstract class Jogador {
 	protected int numberMoves = 0;
 	protected boolean blocked = false;
 	protected boolean winner = false;
-	private boolean dadosIguais;
 
 	public Jogador(int id, int position, int numberMoves) {
 		this.id = id;
@@ -100,12 +99,4 @@ public abstract class Jogador {
 	public abstract int[] jogarDados();
 
 	public abstract String classString();
-
-	public boolean isDadosIguais() {
-		return dadosIguais;
-	}
-
-	public void setDadosIguais(boolean dadosIguais) {
-		this.dadosIguais = dadosIguais;
-	}
 }
